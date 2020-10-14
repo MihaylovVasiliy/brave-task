@@ -1,5 +1,4 @@
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
+import styles from "../styles/Home.module.scss";
 
 export function Wrapper({children}) {
     return (
@@ -8,8 +7,6 @@ export function Wrapper({children}) {
                 Оплата услуг мобильной связи
             </h1>
             <main className={styles.main}>
-                <Link href="./payment"><a> Перейти на страницу оплаты </a></Link>
-                <Link href="./start"><a> Вернуться на начальную страницу </a></Link>
                 {children}
             </main>
         </>
