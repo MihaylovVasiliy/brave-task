@@ -1,5 +1,5 @@
 import styles from "../../styles/Home.module.scss";
-import {Wrapper} from "../wrapper";
+import {Wrapper} from "../../components/wrapper";
 import { useRouter } from 'next/router'
 
 export default function sendRequest({props}) {

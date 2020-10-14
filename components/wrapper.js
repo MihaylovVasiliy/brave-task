@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.scss";
+import React from 'react';
 
 export function Wrapper({children}) {
     return (

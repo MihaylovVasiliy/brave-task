@@ -1,4 +1,4 @@
-import {Wrapper} from "../wrapper";
+import {Wrapper} from "../../components/wrapper";
 import Link from "next/link";
 import MaskInput from 'react-maskinput'
 

@@ -1,4 +1,4 @@
-import { Wrapper } from "./wrapper";
+import { Wrapper } from "../components/wrapper";
 import Link from "next/link";
 
 export default function Start({ operators }) {
