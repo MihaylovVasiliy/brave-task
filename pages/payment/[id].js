@@ -52,7 +52,7 @@ const [onValueChange, setOnValueChange] = React.useState('');
 }
 
 Payment.getInitialProps = async (ctx) => {
-    const res = await fetch(`http://localhost:4200/operators/${ctx.query.id}`)
+    const res = await fetch(`${process.env.API_URL}/operators/${ctx.query.id}`)
     const json = await res.json();
     return {
         responsePayment: json

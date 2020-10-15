@@ -24,7 +24,7 @@ export default function Start({ operators }) {
 }
 
 Start.getInitialProps = async (ctx) => {
-    const res = await fetch('http://localhost:4200/operators')
+    const res = await fetch(`${process.env.API_URL}/operators`)
     const json = await res.json()
     return {
         operators: json
