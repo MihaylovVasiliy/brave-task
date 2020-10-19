@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 export default function sendRequest({props}) {
     const router = useRouter()
     if (props.result == 'success') {
-        router.push('/')
+        setTimeout(() => router.push('/'), 2000)
     }
     else {
-        router.back()}
+        setTimeout(() => router.back(), 2000)}
     return (
         <Wrapper>
             <span className={styles.code}> {
@@ -20,7 +20,7 @@ export default function sendRequest({props}) {
 
 
 sendRequest.getInitialProps = async (ctx) => {
-    const res = await fetch(`${process.env.API_URL2}/api/request`)
+    const res = await fetch(`${process.env.API_URL}/api/request`)
     const json = await res.json()
     console.log(json);
     return {

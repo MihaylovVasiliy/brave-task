@@ -17,6 +17,7 @@ export default function Start({ operators }) {
                     </li>
                 ))
                 }
+
             </ul>
 
         </Wrapper>
@@ -24,10 +25,10 @@ export default function Start({ operators }) {
 }
 
 Start.getInitialProps = async (ctx) => {
-    const res = await fetch(`${process.env.API_URL}/operators`)
+    const res = await fetch(`${process.env.API_URL}/api/requestDatabase`)
     const json = await res.json()
     return {
-        operators: json
+        operators: json.operators
     }
 }
 
