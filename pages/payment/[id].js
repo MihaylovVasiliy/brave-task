@@ -17,9 +17,6 @@ const onSubmit = data => {
 };
 const router = useRouter();
 
-
-console.log(watch("amount"));
-
     return(
         <Wrapper>
             <div className='payment__payment_main-block'>
@@ -34,12 +31,13 @@ console.log(watch("amount"));
                     className="payment__payment_form-input"
                     ref={register({ required: true, pattern: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/})}
                     />
-                {errors.tel && <ErrorSpan>Введите телефон целиком</ErrorSpan>}
+                {errors.tel && errors.tel.type ==='required' && <ErrorSpan> Введите корректный номер телефона </ErrorSpan>}
+                {errors.tel && errors.tel.type ==='pattern' && <ErrorSpan> Введите номер корректно </ErrorSpan>}
 
                 <p className='payment__payment_form__paragraph'> Сумма пополения </p>
                     <input name="amount"
                     type="number"
-                    placeholder="Введите сумму от 1 до 1000р."
+                    placeholder="Введите сумму от 1₽ до 1000₽"
                     className="payment__payment_form-input"
                     ref={register({ required: true, min: 1, max: 1000 })}
                     />

@@ -100,7 +100,7 @@ input[type="submit"] {
 
   input {
     font-size: 16px;
-    width: 290px;
+    width: 300px;
     text-align: center;
   }
 }
@@ -134,15 +134,16 @@ input[type="submit"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .payment__button-block__link {
-  width: 290px;
+  width: 300px;
 }
 
 .payment__payment_form-input {
   margin-top: 10px;
-  padding: 10px;
+  padding: 5px;
   background-color: $color-background;
   border-radius: 10px;
   border: none;
