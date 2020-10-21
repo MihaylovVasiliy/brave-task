@@ -1,50 +1,56 @@
 import {Wrapper} from "../../components/wrapper";
 import Link from "next/link";
-import MaskInput from 'react-maskinput'
-
+import StyledLink from "../../components/styledLink";
+import ErrorSpan from "../../components/errorSpan";
+import { useForm } from "react-hook-form";
+import { useRouter } from 'next/router'
 
 export default function Payment( {responsePayment} ) {
 
-const [onChange, setOnChange] = React.useState('');
-const [onValueChange, setOnValueChange] = React.useState('');
+const { register, handleSubmit, watch, errors } = useForm();
+const onSubmit = data => {
+    console.log(data);
+    router.push({
+        pathname: '/payment/sendRequest',
+        query: data
+    });
+};
+const router = useRouter();
 
+
+console.log(watch("amount"));
 
     return(
         <Wrapper>
             <div className='payment__payment_main-block'>
-            <form className='payment__payment_form'>
+            <form className='payment__payment_form' onSubmit={handleSubmit(onSubmit)}>
                 <img className='payment__payment_form__img' src={responsePayment.logo} alt='Logo'/>
                 <p className='payment__payment_form__paragraph-name'>Оператор {responsePayment.name}</p>
-            </form>
 
-            <form className='payment__payment_form'>
                 <p className='payment__payment_form__paragraph'> Номер телефона </p>
-                <MaskInput
-                  mask={'+7 (000) 000 - 0000'}
-                  size={20}
-                  showMask
-                  maskChar="_"
-                  placeholder="Введите ваш номер без +7"
-                  className="payment__payment_form-input"
-                />
-            </form>
+                <input name="tel"
+                    type="number"
+                    placeholder="Введите номер телефона"
+                    className="payment__payment_form-input"
+                    ref={register({ required: true, pattern: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/})}
+                    />
+                {errors.tel && <ErrorSpan>Введите телефон целиком</ErrorSpan>}
 
-            <form className='payment__payment_form'>
                 <p className='payment__payment_form__paragraph'> Сумма пополения </p>
-                  <MaskInput
-                    onChange={e => {setOnChange(e.target.value)}}
-                    onValueChange={e => {(e.value <= 1000) ? setOnChange(e.value) : setOnChange(1000)}}
-                    mask={'0000'}
-                    value={onChange}
-                    size={20}
+                    <input name="amount"
+                    type="number"
                     placeholder="Введите сумму от 1 до 1000р."
                     className="payment__payment_form-input"
-                  />
+                    ref={register({ required: true, min: 1, max: 1000 })}
+                    />
+                    {errors.amount && errors.amount.type ==='required' && <ErrorSpan> Введите сумму пополнения </ErrorSpan>}
+                    {errors.amount && errors.amount.type ==='min' && <ErrorSpan> Минимальная сумма ввода = 1₽ </ErrorSpan>}
+                    {errors.amount && errors.amount.type ==='max' && <ErrorSpan> Максимальная сумма ввода = 1000₽ </ErrorSpan>}
+                <StyledLink payment><input type="submit" value="Оплатить"/></StyledLink>
             </form>
 
             <div className='payment__button-block'>
-                <Link href="/payment/sendRequest"><a className='payment__button-block__link'>Оплатить</a></Link>
-                <Link href="/"><a className='payment__button-block__link'> Вернуться к выбору оператора </a></Link>
+                <Link href="/"><StyledLink payment> Вернуться к выбору оператора </StyledLink></Link>
             </div>
             </div>
         </Wrapper>

@@ -1,5 +1,6 @@
 import { Wrapper } from "../components/wrapper";
 import Link from "next/link";
+import StyledLink from "../components/styledLink";
 
 export default function Start({ operators }) {
 
@@ -7,19 +8,17 @@ export default function Start({ operators }) {
         <Wrapper>
             <ul className='operators-list'>
                 {operators.map(op => (
-                    <li className='operators-list__item' key={op.name} data-info={JSON.stringify(op)}>
+                    <li className='operators-list__item' key={op.id} data-info={JSON.stringify(op)}>
                         <img className='operators-list__item_img' src={op.logo} alt='Logo'/>
                         <span className='operators-list__item_name'>{op.name}</span>
                         <span className='operators-list__item_description'>{op.description}</span>
                         <Link href={`/payment/[id]`} as={`/payment/${op.id}`}>
-                            <a className='operators-list__item_link'>Перейти к оплате</a>
+                            <StyledLink>Перейти к оплате</StyledLink>
                         </Link>
                     </li>
                 ))
                 }
-
             </ul>
-
         </Wrapper>
     );
 }

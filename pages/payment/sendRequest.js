@@ -14,6 +14,8 @@ export default function sendRequest({props}) {
             <span className={styles.code}> {
                 props.message
             } </span>
+            {
+                console.log(JSON.stringify(router.query))}
         </Wrapper>
     )
 }
