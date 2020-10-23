@@ -20,7 +20,6 @@ const onSubmit = data => {
 };
 
 const router = useRouter();
-console.log(watch("tel", false))
 
     return(
         <Wrapper>
@@ -39,6 +38,7 @@ console.log(watch("tel", false))
                                   render={props =>
                                     <InputMask
                                       type="phone"
+                                      name="tel"
                                       mask={'+7(999)999-99-99'}
                                       placeholder="Введите ваш номер телефона"
                                       className="payment__payment_form-input tel-input"
@@ -46,8 +46,7 @@ console.log(watch("tel", false))
                                       console.log(e);
                                       props.onChange(e.target.value)
                                       }}
-                                      checked={props.value}
-                                      ref={register({ required: true})}/>
+                                      checked={props.value}/>
                                   } // props contains: onChange, onBlur and value
                                 />
 
