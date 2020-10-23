@@ -38,7 +38,6 @@ console.log(watch("tel", false))
                                   rules={{ required: true, maxLength: 16, minLength: 16, pattern: /^((8|\+374|\+994|\+995|\+375|\+7|\+380|\+38|\+996|\+998|\+993)[\- ]?)?\(?\d{3,5}\)?[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}[\- ]?\d{1}(([\- ]?\d{1})?[\- ]?\d{1})?$/ }}
                                   render={props =>
                                     <InputMask
-                                      name="tel"
                                       type="phone"
                                       mask={'+7(999)999-99-99'}
                                       placeholder="Введите ваш номер телефона"
