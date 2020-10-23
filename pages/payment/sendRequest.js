@@ -24,7 +24,6 @@ export default function sendRequest({props}) {
 sendRequest.getInitialProps = async (ctx) => {
     const res = await fetch(`${process.env.API_URL}/api/request`)
     const json = await res.json()
-    console.log(json);
     return {
         props: json
     }
